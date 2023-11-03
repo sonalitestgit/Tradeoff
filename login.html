@@ -1,0 +1,161 @@
+
+
+
+ <!DOCTYPE html>
+<html>
+<head>
+    <title>Registration</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="stylesheet" type="text/css" href="login.css">
+</head>
+<body>
+    <section id="header">
+        <a href="#"><img src="img/logo.png" alt=""></a>
+        <div>
+            <ul id="navbar">
+                <li><a  href="index.html">Home</a></li>
+                <li><a href="Shop.html">Shop</a></li>
+                <li><a href="Blog.html">Blog</a></li>
+                <li><a class="active" href="signup.html">SignUp</a></li>
+                <li><a href="cart.html"><img src="img/icons8-shopping-cart-50.png" alt=""></a></li>
+            </ul>
+        </div>
+    </section>
+    <div id="container">
+        <h4>Register</h4>
+        <form id="registration-form">
+            <input type="text" id="register-name" placeholder="Name" required>
+            <input type="email" id="register-email" placeholder="Email" required>
+            <input type="password" id="register-password" placeholder="Password" required>
+            <button id="register-button">Register</button>
+        </form>
+        <p id="welcome-message" style="display: none;"></p>
+    </div>
+    <footer class="section-p1">
+        <div class="col">
+            <img class="logo" src="img/logo.png" alt="">
+            <h4>Contact</h4>
+    
+            <p><strong>Address:</strong>562 Weellington Road,Street 32,San Francisco</p>
+             <p><strong>Phone:</strong>+01 2222 365 /(+91)01 1345 6789</p>
+             <p><strong>Hours:</strong>10:00 - 18.00, Mon - Sat</p>
+             <div class="follow">
+             <h4>Follow us</h4>
+             <div class="icon">
+               <i class="fab fa-facebook"></i>
+               <i class="fab fa-twitter"></i>
+               <i class="fab fa-instagram"></i>
+               <i class="fab fa-pointerest-p"></i>
+               <i class="fab fa-youtube"></i>
+
+             </div>
+            </div>
+        </div>
+        <div class="col">
+            <h4>About</h4>
+            <a href="">About us</a>
+            <a href="">Delivery Information</a>
+            <a href="">Privacy policy</a>
+            <a href="">Terms & Condition</a>
+            <a href="">Contact Us</a>
+        </div>
+        <div class="col">
+            <h4>Account</h4>
+            <a href="">Sign In</a>
+            <a href="">View Cart</a>
+            <a href="">My Wishlist</a>
+            <a href="">Track My Order</a>
+            <a href="">Help</a>
+        </div>
+        <div class="col install">
+            <h4>Install App</h4>
+            <p>From App Store or Google Play</p>
+            <div class="row">
+                <img src="img/pay/app.jpg" alt="">
+                <img src="img/pay/play.jpg" alt="">
+            </div>
+            <p>Secured Payment Gateways</p>
+            <img src="img/pay/pay.png" alt="">
+            
+        </div>
+        <div class="copyright">
+            <p>© 2023, Making E-commerce Website</p>
+        </div>
+    </footer>
+
+    <script type="module">
+         // Import the functions you need from the SDKs you need
+        // import { initializeApp } from "https://www.gstatic.com/firebasejs/9.10.0/firebase-app.js";
+        // import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.10.0/firebase-analytics.js";
+        // import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut }from 
+        // "https://www.gstatic.com/firebasejs/9.10.0/firebase-auth.js";
+
+
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/9.10.0/firebase-app.js";
+        import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.10.0/firebase-analytics.js";
+        import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut } from 
+        "https://www.gstatic.com/firebasejs/9.10.0/firebase-auth.js";
+
+        const firebaseConfig = {
+          apiKey: "AIzaSyA2uzM0vOyJUcShhA2ck_coQVcjSRneBIY",
+          authDomain: "test-d0cb1.firebaseapp.com",
+          projectId: "test-d0cb1",
+          storageBucket: "test-d0cb1.appspot.com",
+          messagingSenderId: "593285537217",
+          appId: "1:593285537217:web:214e8434e3c0a285a5a340",
+          measurementId: "G-Y87RWSH5WT"
+          };
+      
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+        const analytics = getAnalytics(app);
+        const auth = getAuth();
+      
+        // console.log(app);
+
+    document.getElementById("register-button").addEventListener("click", function(event) {
+    event.preventDefault(); // Prevent form submission
+
+    var email = document.getElementById("register-email").value;
+    var password = document.getElementById("register-password").value;
+
+    // For new registration
+    createUserWithEmailAndPassword(auth, email, password)
+        .then((userCredential) => {
+            // Signed in
+            const user = userCredential.user;
+            console.log(user);
+            alert("Registration successfully!!");
+            window.location.href = "index.html";
+            // ...
+        })
+        .catch((error) => {
+            const errorCode = error.code;
+            const errorMessage = error.message;
+            // ..
+            console.log(errorMessage);
+            alert(errorMessage);
+        });
+});
+        document.getElementById("register-button").addEventListener("click", function(event) {
+            event.preventDefault(); // Prevent form submission
+
+            var name = document.getElementById("register-name").value;
+            var email = document.getElementById("register-email").value;
+            var password = document.getElementById("register-password").value;
+
+            // Display the name on the page
+            const welcomeMessage = document.getElementById("welcome-message");
+            welcomeMessage.textContent = "Welcome, " + name + "! Registration successful!";
+            welcomeMessage.style.display = "block";
+        });
+
+
+        
+    </script>
+</body>
+</html> 
+
+
+
+

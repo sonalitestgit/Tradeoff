@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" />
+  <link rel="stylesheet" href="style.css">
+  <style>
+    /* Center everything vertically and horizontally */
+    body {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      margin: 0;
+      position: relative;
+      padding-top: 25%;
+    }
+
+    #header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      background-color: #E3E6F3;  /* Add a background color */
+      z-index: 999; /* Set a high z-index to ensure it's on top */
+    }
+
+    #coupon-container {
+      text-align: center;
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+      margin-top: 25px; /* Add a 25px margin to create space after the navbar */
+    }
+
+    #hidden-code {
+      font-weight: bold;
+      font-size: 20px;
+    }
+
+    #avail-button, #sell-button {
+      background-color: #337ab7;
+      color: #fff;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+      margin: 10px;
+    }
+
+    #avail-button:hover, #sell-button:hover {
+      background-color: #235a96;
+    }
+
+    #expires {
+      font-weight: bold;
+      font-size: 16px;
+      margin-top: 10px;
+    }
+
+    #offer-details {
+      font-size: 14px;
+      margin-top: 10px;
+    }
+
+    img {
+      margin-top: 10px; /* Adjust the margin to your preference */
+    }
+  </style>
+</head>
+<body>
+  <section id="header">
+    <a href="#"><img src="img/logo.png" alt=""></a>
+    <div>
+      <ul id="navbar">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="Shop.html">Shop</a></li>
+        <li><a href="Blog.html">Blog</a></li>
+        <li><a href="signup.html">SignUp</a></li>
+        <li><a class="active" href="cart.html"><img src="img/icons8-shopping-cart-50.png" alt=""></a></li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- Coupon Code Container -->
+  <div id="coupon-container">
+    <!-- Add the image link here -->
+    <img src="cupons.png" alt="Coupon Image">
+    
+    <p><span class="bold-text">Use coupon code:</span> <span id="hidden-code">******</span></p>
+    <button id="avail-button">Avail</button>
+    <button id="sell-button">Sell</button>
+
+    <p id="expires">Expires on: October 31, 2023 11:59 PM</p>
+    <p id="offer-details">Get 10% off on your purchase. Terms and conditions apply.</p>
+  </div>
+  
+
+  <script>
+    // Get references to the coupon code element and the buttons
+    const hiddenCode = document.getElementById("hidden-code");
+    const availButton = document.getElementById("avail-button");
+    const sellButton = document.getElementById("sell-button");
+
+    // Add a click event listener to the avail button
+    availButton.addEventListener("click", function() {
+      hiddenCode.textContent = "COUPON123"; // Replace "COUPON123" with your actual coupon code
+      availButton.style.display = "none";
+      sellButton.style.display = "none";
+    });
+
+    // Add a click event listener to the sell button
+    sellButton.addEventListener("click", function() {
+      availButton.style.display = "none";
+      sellButton.style.display = "inline";
+    });
+  </script>
+</body>
+</html>
+
+
+
